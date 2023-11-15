@@ -1,10 +1,7 @@
 package com.goodortrash.app.domain.usecase;
 
-import com.goodortrash.app.domain.bean.MarcelDialog;
 import com.goodortrash.app.domain.bean.Product;
-import com.goodortrash.app.domain.port.MarcelDialogPort;
 import com.goodortrash.app.domain.port.ProductPort;
-import com.goodortrash.utils.BasicDatabaseExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static com.goodortrash.app.domain.bean.MarcelDialog.marcelDialog;
 import static com.goodortrash.app.domain.bean.Product.product;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;

@@ -1,7 +1,6 @@
 package com.goodortrash.app.infrastructure.adapter;
 
 import com.goodortrash.app.domain.bean.MarcelDialog;
-import com.goodortrash.app.domain.bean.Product;
 import com.goodortrash.app.infrastructure.dao.OraTextDao;
 import com.goodortrash.app.infrastructure.dto.OraText;
 import com.goodortrash.app.infrastructure.mapper.OraTextMapper;
@@ -40,12 +39,12 @@ class OraTextAdapterTest {
         OraText oraText = oraText()
                 .id("PAPA")
                 .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
+                .textType("BAD-1")
                 .build();
 
         MarcelDialog marcelDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
+                .dialogType("BAD-1")
                 .build();
 
         when(oraTextDao.getTextById("PAPA")).thenReturn(Optional.of(oraText));

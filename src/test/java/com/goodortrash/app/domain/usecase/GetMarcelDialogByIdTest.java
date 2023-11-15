@@ -30,7 +30,7 @@ class GetMarcelDialogByIdTest {
         //Arrange
         MarcelDialog marcelDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
+                .dialogType("BAD-1")
                 .build();
 
         when(marcelDialogAdapter.getDialogById("PAPA")).thenReturn(marcelDialog);

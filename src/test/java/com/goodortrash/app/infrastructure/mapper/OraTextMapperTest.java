@@ -1,17 +1,11 @@
 package com.goodortrash.app.infrastructure.mapper;
 
 import com.goodortrash.app.domain.bean.MarcelDialog;
-import com.goodortrash.app.domain.bean.Product;
-import com.goodortrash.app.infrastructure.dto.OraProduct;
 import com.goodortrash.app.infrastructure.dto.OraText;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static com.goodortrash.app.domain.bean.MarcelDialog.marcelDialog;
-import static com.goodortrash.app.domain.bean.Product.product;
-import static com.goodortrash.app.infrastructure.dto.OraProduct.oraProduct;
 import static com.goodortrash.app.infrastructure.dto.OraText.oraText;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,7 +23,7 @@ class OraTextMapperTest {
         OraText oraText = oraText()
                 .id("PAPA")
                 .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
+                .textType("BAD-1")
                 .build();
 
         //Act
@@ -38,7 +32,7 @@ class OraTextMapperTest {
         //Assert
         MarcelDialog expectedDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
+                .dialogType("BAD-1")
                 .build();
 
         assertThat(outputDialog).isEqualTo(expectedDialog);

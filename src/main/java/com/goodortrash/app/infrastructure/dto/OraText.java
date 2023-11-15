@@ -13,7 +13,7 @@ public class OraText {
 
     private String id;
     private String text;
-    private String moral;
+    private String textType;
 
     public static OraTextBuilder oraText() {
         return new OraTextBuilder();

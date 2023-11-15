@@ -13,7 +13,7 @@ public class OraTextMapper {
 
         return marcelDialog()
                 .text(oraText.getText())
-                .moral(oraText.getMoral())
+                .dialogType(oraText.getTextType())
                 .build();
     }
 

@@ -44,7 +44,7 @@ class OraTextDaoTest {
                 oraText()
                         .id("PAPA")
                         .text("PAPA BAISE TES MORTS")
-                        .moral("BAD")
+                        .textType("BAD-1")
                         .build()
         );
 
