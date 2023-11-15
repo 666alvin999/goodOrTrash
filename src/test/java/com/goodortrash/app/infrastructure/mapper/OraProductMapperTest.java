@@ -35,9 +35,10 @@ class OraProductMapperTest {
                 .novaScore(4)
                 .ecoScore('E')
                 .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
                 .build();
 
-        // Act
+        //Act
         Product outputProduct = oraProductMapper.mapToBusiness(oraProduct);
 
         //Assert
@@ -47,10 +48,9 @@ class OraProductMapperTest {
                 .brand("Coca-Cola")
                 .packing("plastic")
                 .origins(List.of("USA"))
-                .nutriScore('D')
-                .novaScore(4)
                 .ecoScore('E')
                 .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
                 .build();
 
         assertThat(outputProduct).isEqualTo(expectedProduct);

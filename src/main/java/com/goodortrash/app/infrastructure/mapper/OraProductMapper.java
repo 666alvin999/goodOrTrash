@@ -2,29 +2,30 @@ package com.goodortrash.app.infrastructure.mapper;
 
 import com.goodortrash.app.domain.bean.Product;
 import com.goodortrash.app.infrastructure.dto.OraProduct;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.goodortrash.app.domain.bean.Product.product;
 
+@Component
 public class OraProductMapper {
 
     public Product mapToBusiness(OraProduct oraProduct) {
         List<String> categories = Arrays.stream(oraProduct.getCategory().split(";")).toList();
         List<String> origins = Arrays.stream(oraProduct.getOrigin().split(";")).toList();
 
-        return product()
-                .name(oraProduct.getName())
-                .brand(oraProduct.getBrand())
-                .categories(categories)
-                .packing(oraProduct.getPacking())
-                .origins(origins)
-                .ecoScore(oraProduct.getEcoScore())
-                .explanation(oraProduct.getExplanation())
-                .novaScore(oraProduct.getNovaScore())
-                .nutriScore(oraProduct.getNutriScore())
-                .build();
+        return new Product(
+                oraProduct.getName(),
+                oraProduct.getBrand(),
+                categories,
+                oraProduct.getPacking(),
+                origins,
+                oraProduct.getEcoScore(),
+                oraProduct.getExplanation(),
+                oraProduct.getUrlToOpenFoodFacts()
+        );
     }
 
 }

@@ -13,7 +13,8 @@ CREATE TABLE PRODUCTS(
     NOVASCORE INT,
     ECOSCORE CHAR NOT NULL,
     EXPLANATION VARCHAR(255) NOT NULL,
+    URL_TO_OPEN_FOOD_FACTS VARCHAR(255) NOT NULL,
     PRIMARY KEY (REFERENCE)
 );
 
-INSERT INTO PRODUCTS VALUES ('0001', 'Coca-Cola 33ml 6-pack', 'Drink', 'Coca-Cola', 'plastic', '6 cans', 'Good but bad', 'USA', 'D', '4', 'E', 'ta mere le triceratops tetraplegique');
+INSERT INTO PRODUCTS VALUES ('0001', 'Coca-Cola 33ml 6-pack', 'Drink', 'Coca-Cola', 'plastic', '6 cans', 'Good but bad', 'USA', 'D', '4', 'E', 'ta mere le triceratops tetraplegique', 'xxx');

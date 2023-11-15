@@ -23,6 +23,7 @@ public class OraProduct {
     private int novaScore;
     private char ecoScore;
     private String explanation;
+    private String urlToOpenFoodFacts;
 
     public static OraProductBuilder oraProduct() {
         return new OraProductBuilder();

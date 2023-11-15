@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class OraProductDao {
@@ -27,10 +28,12 @@ public class OraProductDao {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<OraProduct> getProductByReference(String reference) {
+    public Optional<OraProduct> getProductByReference(String reference) {
         Map<String, String> parameters = Map.of("reference", reference);
 
-        return jdbcTemplate.query(BY_REFERENCE, parameters, new BeanPropertyRowMapper<>(OraProduct.class));
+        List<OraProduct> results = jdbcTemplate.query(BY_REFERENCE, parameters, new BeanPropertyRowMapper<>(OraProduct.class));
+
+        return Optional.of(results.get(0));
     }
 
 }

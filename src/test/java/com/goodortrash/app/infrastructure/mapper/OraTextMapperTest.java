@@ -32,7 +32,7 @@ class OraTextMapperTest {
                 .moral("BAD")
                 .build();
 
-        // Act
+        //Act
         MarcelDialog outputDialog = oraTextMapper.mapToBusiness(oraText);
 
         //Assert

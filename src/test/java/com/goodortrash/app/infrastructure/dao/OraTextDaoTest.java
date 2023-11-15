@@ -35,7 +35,7 @@ class OraTextDaoTest {
 
     @Test
     public void shouldReturnTextById() {
-        // Act
+        //Act
         OraText outputOraText = oraTextDao.getTextById("0001").get(0);
 
         //Assert
