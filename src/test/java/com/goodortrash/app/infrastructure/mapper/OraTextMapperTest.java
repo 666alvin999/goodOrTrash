@@ -27,7 +27,7 @@ class OraTextMapperTest {
     @Test
     public void shouldMapOraTextToBusinessText() {
         OraText oraText = oraText()
-                .id("0001")
+                .id("PAPA")
                 .text("PAPA BAISE TES MORTS")
                 .moral("BAD")
                 .build();

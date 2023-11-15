@@ -37,12 +37,12 @@ class OraTextDaoTest {
     @Test
     public void shouldReturnTextById() {
         //Act
-        Optional<OraText> outputOraText = oraTextDao.getTextById("0001");
+        Optional<OraText> outputOraText = oraTextDao.getTextById("PAPA");
 
         //Assert
         Optional<OraText> expectedOutput = Optional.of(
                 oraText()
-                        .id("0001")
+                        .id("PAPA")
                         .text("PAPA BAISE TES MORTS")
                         .moral("BAD")
                         .build()

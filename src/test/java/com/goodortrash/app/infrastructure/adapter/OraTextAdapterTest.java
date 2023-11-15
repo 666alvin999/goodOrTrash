@@ -38,7 +38,7 @@ class OraTextAdapterTest {
     public void givenValidId_whenGettingMarcelDialogById_ThenGetMarcelDialog() {
         //Arrange
         OraText oraText = oraText()
-                .id("0001")
+                .id("PAPA")
                 .text("PAPA BAISE TES MORTS")
                 .moral("BAD")
                 .build();
@@ -48,11 +48,11 @@ class OraTextAdapterTest {
                 .moral("BAD")
                 .build();
 
-        when(oraTextDao.getTextById("0001")).thenReturn(Optional.of(oraText));
+        when(oraTextDao.getTextById("PAPA")).thenReturn(Optional.of(oraText));
         when(oraTextMapper.mapToBusiness(oraText)).thenReturn(marcelDialog);
 
         //Act
-        MarcelDialog output = oraTextAdapter.getDialogById("0001");
+        MarcelDialog output = oraTextAdapter.getDialogById("PAPA");
 
         //Assert
         assertThat(output).isEqualTo(marcelDialog);
