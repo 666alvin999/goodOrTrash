@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Repository
@@ -28,10 +29,10 @@ public class OraTextDao {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<OraText> getTextById(String id) {
+    public Optional<OraText> getTextById(String id) {
         Map<String, String> parameters = Map.of("id", id);
 
-        return jdbcTemplate.query(BY_ID, parameters, new BeanPropertyRowMapper<>(OraText.class));
+        return Optional.of(jdbcTemplate.query(BY_ID, parameters, new BeanPropertyRowMapper<>(OraText.class)).get(0));
     }
 
 }

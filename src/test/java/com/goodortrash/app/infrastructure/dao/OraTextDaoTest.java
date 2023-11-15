@@ -11,11 +11,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Optional;
 
+import static com.goodortrash.app.infrastructure.dto.OraText.oraText;
 import static java.nio.file.Files.readAllBytes;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
-import static com.goodortrash.app.infrastructure.dto.OraText.oraText;
 
 @ExtendWith(BasicDatabaseExtension.class)
 class OraTextDaoTest {
@@ -36,14 +37,16 @@ class OraTextDaoTest {
     @Test
     public void shouldReturnTextById() {
         //Act
-        OraText outputOraText = oraTextDao.getTextById("0001").get(0);
+        Optional<OraText> outputOraText = oraTextDao.getTextById("0001");
 
         //Assert
-        OraText expectedOutput = oraText()
-                .id("0001")
-                .text("PAPA BAISE TES MORTS")
-                .moral("BAD")
-                .build();
+        Optional<OraText> expectedOutput = Optional.of(
+                oraText()
+                        .id("0001")
+                        .text("PAPA BAISE TES MORTS")
+                        .moral("BAD")
+                        .build()
+        );
 
         assertThat(outputOraText).isEqualTo(expectedOutput);
     }

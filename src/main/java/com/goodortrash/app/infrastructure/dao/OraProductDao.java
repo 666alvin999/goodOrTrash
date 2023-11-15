@@ -31,9 +31,7 @@ public class OraProductDao {
     public Optional<OraProduct> getProductByReference(String reference) {
         Map<String, String> parameters = Map.of("reference", reference);
 
-        List<OraProduct> results = jdbcTemplate.query(BY_REFERENCE, parameters, new BeanPropertyRowMapper<>(OraProduct.class));
-
-        return Optional.of(results.get(0));
+        return Optional.of(jdbcTemplate.query(BY_REFERENCE, parameters, new BeanPropertyRowMapper<>(OraProduct.class)).get(0));
     }
 
 }
