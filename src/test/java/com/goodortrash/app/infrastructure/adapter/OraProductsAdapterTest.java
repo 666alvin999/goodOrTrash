@@ -86,4 +86,47 @@ class OraProductsAdapterTest {
         assertThat(output).isNull();
     }
 
+    @Test
+    public void shouldReturnAllProducts() {
+        //Arrange
+        List<OraProduct> oraProducts = List.of(
+                oraProduct()
+                .reference("0001")
+                .name("Coca-Cola 33ml 6-pack")
+                .category("Drink")
+                .brand("Coca-Cola")
+                .packing("plastic")
+                .quantity("6 cans")
+                .labels("Good but bad")
+                .origin("USA")
+                .nutriScore('D')
+                .novaScore(4)
+                .ecoScore('E')
+                .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
+                .build()
+        );
+
+        List<Product> products = List.of(product()
+                .name("Coca-Cola 33ml 6-pack")
+                .categories(List.of("Drink"))
+                .brand("Coca-Cola")
+                .packing("plastic")
+                .origins(List.of("USA"))
+                .ecoScore('E')
+                .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
+                .build()
+        );
+
+        when(oraProductDao.getAllProducts()).thenReturn(oraProducts);
+        when(oraProductMapper.mapAllToBusiness(oraProducts)).thenReturn(products);
+
+        //Act
+        List<Product> outputProducts = oraProductsAdapter.getAllProducts();
+
+        //Assert
+        assertThat(outputProducts).isEqualTo(products);
+    }
+
 }

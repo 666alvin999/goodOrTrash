@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.goodortrash.app.domain.bean.MarcelDialog.marcelDialog;
@@ -36,36 +37,35 @@ class OraTextAdapterTest {
     @Test
     public void givenValidId_whenGettingMarcelDialogById_ThenGetMarcelDialog() {
         //Arrange
-        OraText oraText = oraText()
-                .id("PAPA")
+        List<OraText> oraTexts = List.of(oraText()
                 .text("PAPA BAISE TES MORTS")
-                .textType("BAD-1")
-                .build();
+                .textType("BAD")
+                .build());
 
-        MarcelDialog marcelDialog = marcelDialog()
+        List<MarcelDialog> marcelDialogs = List.of(marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .dialogType("BAD-1")
-                .build();
+                .dialogType("BAD")
+                .build());
 
-        when(oraTextDao.getTextById("PAPA")).thenReturn(Optional.of(oraText));
-        when(oraTextMapper.mapToBusiness(oraText)).thenReturn(marcelDialog);
+        when(oraTextDao.getTextByTextType("BAD")).thenReturn(oraTexts);
+        when(oraTextMapper.mapAllToBusiness(oraTexts)).thenReturn(marcelDialogs);
 
         //Act
-        MarcelDialog output = oraTextAdapter.getDialogById("PAPA");
+        List<MarcelDialog> output = oraTextAdapter.getDialogByDialogType("BAD");
 
         //Assert
-        assertThat(output).isEqualTo(marcelDialog);
+        assertThat(output).isEqualTo(marcelDialogs);
     }
 
     @Test
     public void givenInvalidId_whenGettingMarcelDialogById_thenGetNull() {
         //Arrange
-        when(oraTextDao.getTextById("0002")).thenReturn(Optional.empty());
+        when(oraTextDao.getTextByTextType("0002")).thenReturn(List.of());
 
         //Act
-        MarcelDialog output = oraTextAdapter.getDialogById("0002");
+        List<MarcelDialog> output = oraTextAdapter.getDialogByDialogType("0002");
 
         //Assert
-        assertThat(output).isNull();
+        assertThat(output).isEmpty();
     }
 }

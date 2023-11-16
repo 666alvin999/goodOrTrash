@@ -34,13 +34,13 @@ class MarcelDialogPresenterTest {
         //Arrange
         MarcelDialog marcelDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .dialogType("BAD-1")
+                .dialogType("BAD")
                 .build();
 
         MarcelDialogView marcelDialogView = marcelDialogView()
                 .text("PAPABAISETESMORTS")
                 .dialogCssClass("aggressive")
-                .associatedMarcelDesignName("mad-marcel-1")
+                .associatedMarcelDesignName("mad-marcel")
                 .build();
 
         when(marcelDialogViewMapper.mapToMarcelDialogView(marcelDialog)).thenReturn(marcelDialogView);
@@ -53,7 +53,7 @@ class MarcelDialogPresenterTest {
                 {
                     "text":"PAPABAISETESMORTS",
                     "dialogCssClass":"aggressive",
-                    "associatedMarcelDesignName":"mad-marcel-1"
+                    "associatedMarcelDesignName":"mad-marcel"
                 }""");
 
         assertThat(output).isEqualTo(ResponseEntity.ok(expectedOutput));

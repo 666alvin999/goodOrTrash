@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @AllArgsConstructor
 public class MarcelDialogPresenter {
@@ -15,6 +17,10 @@ public class MarcelDialogPresenter {
 
     public ResponseEntity<String> present(MarcelDialog marcelDialog) {
         return ResponseEntity.ok(new Gson().toJson(marcelDialogViewMapper.mapToMarcelDialogView(marcelDialog)));
+    }
+
+    public ResponseEntity<String> presentAll(List<MarcelDialog> marcelDialogs) {
+        return ResponseEntity.ok(new Gson().toJson(marcelDialogViewMapper.mapAllToMarcelDialogView(marcelDialogs)));
     }
 
 }

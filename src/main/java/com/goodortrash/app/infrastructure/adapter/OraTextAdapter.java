@@ -8,7 +8,7 @@ import com.goodortrash.app.infrastructure.mapper.OraTextMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
+import java.util.List;
 
 @Component
 @AllArgsConstructor
@@ -18,9 +18,9 @@ public class OraTextAdapter implements MarcelDialogPort {
     private OraTextMapper oraTextMapper;
 
     @Override
-    public MarcelDialog getDialogById(String id) {
-        Optional<OraText> daoResult = oraTextDao.getTextById(id);
+    public List<MarcelDialog> getDialogByDialogType(String dialogType) {
+        List<OraText> daoResult = oraTextDao.getTextByTextType(dialogType);
 
-        return daoResult.map(oraText -> oraTextMapper.mapToBusiness(oraText)).orElse(null);
+        return oraTextMapper.mapAllToBusiness(daoResult);
     }
 }

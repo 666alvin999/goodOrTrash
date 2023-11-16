@@ -17,6 +17,7 @@ public class OraProductMapper {
         List<String> origins = Arrays.stream(oraProduct.getOrigin().split(";")).toList();
 
         return new Product(
+                oraProduct.getReference(),
                 oraProduct.getName(),
                 oraProduct.getBrand(),
                 categories,
@@ -28,4 +29,7 @@ public class OraProductMapper {
         );
     }
 
+    public List<Product> mapAllToBusiness(List<OraProduct> oraProducts) {
+        return oraProducts.stream().map(this::mapToBusiness).toList();
+    }
 }

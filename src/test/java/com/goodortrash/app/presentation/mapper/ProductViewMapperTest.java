@@ -24,6 +24,7 @@ class ProductViewMapperTest {
     public void shouldReturnProductViewModel() {
         //Arrange
         Product product = product()
+                .id("0001")
                 .name("Coca-Cola 33ml 6-pack")
                 .categories(List.of("Drink"))
                 .brand("Coca-Cola")
@@ -39,6 +40,7 @@ class ProductViewMapperTest {
 
         //Assert
         ProductView expectedOutput = productView()
+                .id("0001")
                 .name("Coca-Cola 33ml 6-pack")
                 .categories(List.of("Drink"))
                 .brand("Coca-Cola")

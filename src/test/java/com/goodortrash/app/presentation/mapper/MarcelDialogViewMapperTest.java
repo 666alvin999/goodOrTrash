@@ -25,7 +25,7 @@ public class MarcelDialogViewMapperTest {
         //Arrange
         MarcelDialog marcelDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .dialogType("BAD-1")
+                .dialogType("BAD")
                 .build();
 
         //Act
@@ -35,7 +35,7 @@ public class MarcelDialogViewMapperTest {
         MarcelDialogView expectedOutput = marcelDialogView()
                 .text("PAPA BAISE TES MORTS")
                 .dialogCssClass("aggressive")
-                .associatedMarcelDesignName("mad-marcel-1")
+                .associatedMarcelDesignName("mad-marcel")
                 .build();
 
         assertThat(output).isEqualTo(expectedOutput);

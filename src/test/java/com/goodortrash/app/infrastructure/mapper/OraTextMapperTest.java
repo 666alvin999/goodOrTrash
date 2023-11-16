@@ -21,9 +21,8 @@ class OraTextMapperTest {
     @Test
     public void shouldMapOraTextToBusinessText() {
         OraText oraText = oraText()
-                .id("PAPA")
                 .text("PAPA BAISE TES MORTS")
-                .textType("BAD-1")
+                .textType("BAD")
                 .build();
 
         //Act
@@ -32,7 +31,7 @@ class OraTextMapperTest {
         //Assert
         MarcelDialog expectedDialog = marcelDialog()
                 .text("PAPA BAISE TES MORTS")
-                .dialogType("BAD-1")
+                .dialogType("BAD")
                 .build();
 
         assertThat(outputDialog).isEqualTo(expectedDialog);

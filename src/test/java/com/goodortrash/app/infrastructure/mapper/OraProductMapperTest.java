@@ -43,6 +43,7 @@ class OraProductMapperTest {
 
         //Assert
         Product expectedProduct = product()
+                .id("0001")
                 .name("Coca-Cola 33ml 6-pack")
                 .categories(List.of("Drink"))
                 .brand("Coca-Cola")
@@ -54,6 +55,43 @@ class OraProductMapperTest {
                 .build();
 
         assertThat(outputProduct).isEqualTo(expectedProduct);
+    }
+
+    @Test
+    public void shouldMapAllOraProductsToBusinessProducts() {
+        List<OraProduct> oraProducts = List.of(oraProduct()
+                .reference("0001")
+                .name("Coca-Cola 33ml 6-pack")
+                .category("Drink")
+                .brand("Coca-Cola")
+                .packing("plastic")
+                .quantity("6 cans")
+                .labels("Good but bad")
+                .origin("USA")
+                .nutriScore('D')
+                .novaScore(4)
+                .ecoScore('E')
+                .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
+                .build());
+
+        //Act
+        List<Product> outputProducts = oraProductMapper.mapAllToBusiness(oraProducts);
+
+        //Assert
+        List<Product> expectedProducts = List.of(product()
+                .id("0001")
+                .name("Coca-Cola 33ml 6-pack")
+                .categories(List.of("Drink"))
+                .brand("Coca-Cola")
+                .packing("plastic")
+                .origins(List.of("USA"))
+                .ecoScore('E')
+                .explanation("ta mere le triceratops tetraplegique")
+                .urlToOpenFoodFacts("xxx")
+                .build());
+
+        assertThat(outputProducts).isEqualTo(expectedProducts);
     }
 
 }

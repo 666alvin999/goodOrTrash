@@ -19,6 +19,7 @@ public class OraProductDao {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     private final String BY_REFERENCE = "SELECT * FROM PRODUCTS WHERE REFERENCE = :reference;";
+    private final String ALL_PRODUCTS = "SELECT * FROM PRODUCTS;";
 
     public OraProductDao() {
 
@@ -26,6 +27,10 @@ public class OraProductDao {
 
     public OraProductDao(@Qualifier(value = "dataSource") DataSource dataSource) {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
+    public List<OraProduct> getAllProducts() {
+        return jdbcTemplate.query(ALL_PRODUCTS, new BeanPropertyRowMapper<>(OraProduct.class));
     }
 
     public Optional<OraProduct> getProductByReference(String reference) {

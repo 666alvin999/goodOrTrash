@@ -8,6 +8,7 @@ import com.goodortrash.app.infrastructure.mapper.OraProductMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -21,6 +22,12 @@ public class OraProductsAdapter implements ProductPort {
         Optional<OraProduct> daoResult = oraProductDao.getProductByReference(reference);
 
         return daoResult.map(oraProduct -> oraProductMapper.mapToBusiness(oraProduct)).orElse(null);
+    }
+
+    public List<Product> getAllProducts() {
+        List<OraProduct> daoResult = oraProductDao.getAllProducts();
+
+        return oraProductMapper.mapAllToBusiness(daoResult);
     }
 
 }

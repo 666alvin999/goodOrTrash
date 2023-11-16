@@ -11,7 +11,6 @@ import lombok.*;
 @Builder
 public class OraText {
 
-    private String id;
     private String text;
     private String textType;
 

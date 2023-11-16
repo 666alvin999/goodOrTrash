@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Repository
@@ -19,7 +18,7 @@ public class OraTextDao {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-    private final String BY_ID = "SELECT * FROM TEXT WHERE ID = :id;";
+    private final String BY_TEXT_TYPE = "SELECT * FROM TEXT WHERE TEXT_TYPE LIKE :textType;";
 
     public OraTextDao() {
 
@@ -29,10 +28,10 @@ public class OraTextDao {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public Optional<OraText> getTextById(String id) {
-        Map<String, String> parameters = Map.of("id", id);
+    public List<OraText> getTextByTextType(String textType) {
+        Map<String, String> parameters = Map.of("textType", textType);
 
-        return Optional.of(jdbcTemplate.query(BY_ID, parameters, new BeanPropertyRowMapper<>(OraText.class)).get(0));
+        return jdbcTemplate.query(BY_TEXT_TYPE, parameters, new BeanPropertyRowMapper<>(OraText.class));
     }
 
 }

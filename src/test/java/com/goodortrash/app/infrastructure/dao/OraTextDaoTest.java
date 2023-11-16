@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import static com.goodortrash.app.infrastructure.dto.OraText.oraText;
@@ -37,14 +38,13 @@ class OraTextDaoTest {
     @Test
     public void shouldReturnTextById() {
         //Act
-        Optional<OraText> outputOraText = oraTextDao.getTextById("PAPA");
+        List<OraText> outputOraText = oraTextDao.getTextByTextType("BAD");
 
         //Assert
         Optional<OraText> expectedOutput = Optional.of(
                 oraText()
-                        .id("PAPA")
                         .text("PAPA BAISE TES MORTS")
-                        .textType("BAD-1")
+                        .textType("BAD")
                         .build()
         );
 

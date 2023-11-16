@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import static com.goodortrash.app.infrastructure.dto.OraProduct.oraProduct;
@@ -59,6 +60,33 @@ class OraProductDaoTest {
         );
 
         assertThat(outputOraProduct).isEqualTo(expectedOraProduct);
+    }
+
+    @Test
+    public void shouldReturnAllOraProducts() {
+        //Act
+        List<OraProduct> outputOraProduct = oraProductDao.getAllProducts();
+
+        //Assert
+        List<OraProduct> expectedOraProducts = List.of(
+                oraProduct()
+                        .reference("0001")
+                        .name("Coca-Cola 33ml 6-pack")
+                        .category("Drink")
+                        .brand("Coca-Cola")
+                        .packing("plastic")
+                        .quantity("6 cans")
+                        .labels("Good but bad")
+                        .origin("USA")
+                        .nutriScore('D')
+                        .novaScore(4)
+                        .ecoScore('E')
+                        .explanation("ta mere le triceratops tetraplegique")
+                        .urlToOpenFoodFacts("xxx")
+                        .build()
+        );
+
+        assertThat(outputOraProduct).isEqualTo(expectedOraProducts);
     }
 
     @SneakyThrows

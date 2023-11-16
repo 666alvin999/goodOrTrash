@@ -2,8 +2,10 @@ package com.goodortrash.app.domain.port;
 
 import com.goodortrash.app.domain.bean.MarcelDialog;
 
+import java.util.List;
+
 public interface MarcelDialogPort {
 
-    MarcelDialog getDialogById(String id);
+    List<MarcelDialog> getDialogByDialogType(String dialogType);
 
 }

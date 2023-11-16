@@ -36,6 +36,7 @@ class ProductPresenterTest {
     public void shouldPresentProductInJson() {
         //Arrange
         Product product = product()
+                .id("0001")
                 .name("Coca-Cola 33ml 6-pack")
                 .categories(List.of("Drink"))
                 .brand("Coca-Cola")
@@ -47,6 +48,7 @@ class ProductPresenterTest {
                 .build();
 
         ProductView productView = productView()
+                .id("0001")
                 .name("Coca-Cola33ml6-pack")
                 .brand("Coca-Cola")
                 .categories(List.of("Drink"))
@@ -65,6 +67,7 @@ class ProductPresenterTest {
         //Assert
         String expectedOutput = trimAllWhitespace("""
                 {
+                    "id":"0001",
                     "name":"Coca-Cola33ml6-pack",
                     "brand":"Coca-Cola",
                     "categories": [
